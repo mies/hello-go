@@ -1,4 +1,4 @@
-# This references the default golang container from
+
 # the Docker Hub: https://registry.hub.docker.com/u/library/golang/
 # If you want Google's container you would reference google/golang
 # Read more about containers on our dev center
@@ -43,3 +43,11 @@ build:
         name: go test
         code: |
           go test ./...
+
+push-hub:
+  steps:
+    - internal-push:
+        username: $USERNAME
+        password: $PASSWORD
+        tag: $WERCKER_GIT_BRANCH-$WERCKER_GIT_COMMIT
+        repository: waynegibbins/hello-go
